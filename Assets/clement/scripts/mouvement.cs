@@ -4,28 +4,37 @@ using UnityEngine;
 
 public class mouvement : MonoBehaviour
 {
-    public Vector2 vec = new Vector2(0, 0);
+    public Vector2 vec = Vector2.zero;
     public float speed = 10;
     public float bonusSpeed = 1;
     public float timeBonusMouvement = 5;
     public float timeBonusPlayer = 5;
     public Transform passage1, passage2;
+    public Vector2 nextVec = Vector2.zero;
+    public bool onCollision = false;
 
 
     void Update()
     {
-        //listen des touches zqsd et changement du vecteur unitaire
+        //listen des touches zqsd et changement du vecteur unitaire et verification de si il est en collision avec un mur
+        // + ne pas aller dans la dirrection dans lequel il est aller lorsqu'il est rentré en collision avec le mur
+
         if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftArrow))
-            vec = new Vector2(-1, 0);
+            if ((onCollision && Vector2.left != nextVec) || !onCollision)
+                vec = Vector2.left;
 
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-            vec = new Vector2(1, 0);
+            if ((onCollision && Vector2.right != nextVec) || !onCollision)
+                vec = Vector2.right;
+
 
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.UpArrow))
-            vec = new Vector2(0, 1);
+            if ((onCollision && Vector2.up != nextVec) || !onCollision)
+                vec = Vector2.up;
 
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-            vec = new Vector2(0, -1);
+            if ((onCollision && Vector2.down != nextVec) || !onCollision)
+                vec = Vector2.down;
 
 
 
@@ -59,15 +68,27 @@ public class mouvement : MonoBehaviour
         {
             //playerhit
         }
+        else if (collision.gameObject.layer == 9)
+        {
+            nextVec = vec;
+            vec = Vector2.zero;
+            onCollision = true;
+        }
 
 
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == 9)
+            onCollision = false;
     }
     private void OnTriggerEnter2D(Collider2D collision) // passages et teleport
     {
         if (collision.gameObject == passage1.gameObject)
-            this.transform.position = new Vector2(passage2.position.x + 1f, passage2.position.y);
+            this.transform.position = new Vector2(passage2.position.x - 1f, passage2.position.y);
         else if (collision.gameObject == passage2.gameObject)
             this.transform.position = new Vector2(passage1.position.x + 1f, passage1.position.y);
+        
 
     }
     IEnumerator bonusMouvement(float temps) 

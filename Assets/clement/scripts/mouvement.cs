@@ -64,17 +64,18 @@ public class mouvement : MonoBehaviour
 
 
     }
-    IEnumerator bonus(float x)
+    IEnumerator bonus(float temps)
     {
 
-        yield return new WaitForSeconds(x);
+        yield return new WaitForSeconds(temps);
         bonusSpeed = 1;
 
     }
-    IEnumerator waiting(float x)
+    IEnumerator waiting(float temps)
     {
-        yield return new WaitForSeconds(x);
+        yield return new WaitForSeconds(temps);
         this.gameObject.tag = "Player";
+
 
 
     }

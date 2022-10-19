@@ -9,21 +9,22 @@ public class mouvement : MonoBehaviour
     public float bonusSpeed = 1;
     public float timeBonusMouvement = 5;
     public float timeBonusPlayer = 5;
+    public Transform passage1, passage2;
 
 
     void Update()
     {
         //listen des touches zqsd et changement du vecteur unitaire
-        if (Input.GetKeyDown(KeyCode.Q)) 
+        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftArrow))
             vec = new Vector2(-1, 0);
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             vec = new Vector2(1, 0);
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.UpArrow))
             vec = new Vector2(0, 1);
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             vec = new Vector2(0, -1);
 
 
@@ -48,17 +49,25 @@ public class mouvement : MonoBehaviour
         {
             this.gameObject.tag = "playerTransform";
             StartCoroutine(waiting(timeBonusMouvement));
-            collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject);
         }
         else if (collision.gameObject.layer == 8 && this.gameObject.tag == "playerTransform") // si on a le bonus de form et que tu touche un fantomes
         {
-            collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject);
         }
         else if (collision.gameObject.layer == 8 && this.gameObject.tag == "Player") // si on touche un fantome sans le bonus
         {
             //playerhit
         }
 
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject == passage1)
+            this.transform.position = new Vector2(passage2.position.x + 0.5f, passage2.position.y);
+        else if (collision.gameObject == passage2)
+            this.transform.position = new Vector2(passage1.position.x + 0.5f, passage1.position.y);
 
     }
     IEnumerator bonusMouvement(float temps) 

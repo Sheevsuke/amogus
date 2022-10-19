@@ -62,12 +62,12 @@ public class mouvement : MonoBehaviour
 
 
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) // passages et teleport
     {
-        if (collision.gameObject == passage1)
-            this.transform.position = new Vector2(passage2.position.x + 0.5f, passage2.position.y);
-        else if (collision.gameObject == passage2)
-            this.transform.position = new Vector2(passage1.position.x + 0.5f, passage1.position.y);
+        if (collision.gameObject == passage1.gameObject)
+            this.transform.position = new Vector2(passage2.position.x + 1f, passage2.position.y);
+        else if (collision.gameObject == passage2.gameObject)
+            this.transform.position = new Vector2(passage1.position.x + 1f, passage1.position.y);
 
     }
     IEnumerator bonusMouvement(float temps) 

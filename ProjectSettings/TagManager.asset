@@ -4,7 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - PlayerTransform
+=======
+
   layers:
   - Default
   - TransparentFX
@@ -15,7 +18,11 @@ TagManager:
   - bonus
   - bonusPlayer
   - ennemis
-  - obstacle
+<<<<<<< HEAD
+  - mur
+=======
+  - mur
+>>>>>>> main
   - 
   - 
   - 

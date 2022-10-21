@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField] private int _scoreCount;
+    public int scoreCount;
     [SerializeField] private Text _scoreCountText;
 
     public static Score instance;
@@ -23,7 +23,7 @@ public class Score : MonoBehaviour
 
     public void AddScore(int count)
     {
-        _scoreCount += count;
-        _scoreCountText.text = _scoreCount.ToString();
+        scoreCount += count;
+        _scoreCountText.text = scoreCount.ToString();
     }
 }

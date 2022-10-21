@@ -220,6 +220,7 @@ MonoBehaviour:
   _pelletLeft: 0
   _winScreen: {fileID: 598163143}
   _scoreCount: {fileID: 555729020}
+  _scoreCountGame: {fileID: 1295326489}
   _score: {fileID: 118311396}
 --- !u!1 &555729018
 GameObject:

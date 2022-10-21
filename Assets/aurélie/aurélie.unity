@@ -1492,7 +1492,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b629a42f90c8a9449397864e4e2661b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vec: {x: 0, y: 0}
+  vec: {x: 0, y: 0, z: 0}
+  SpriteRenderer: {fileID: 0}
   speed: 10
   bonusSpeed: 1
   timeBonusMouvement: 5
@@ -1501,6 +1502,10 @@ MonoBehaviour:
   passage2: {fileID: 0}
   nextVec: {x: 0, y: 0}
   onCollision: 0
+  rb: {fileID: 0}
+  vie: 3
+  respawn: {fileID: 0}
+  scoreEnemiesKill: 200
 --- !u!212 &1753800307
 SpriteRenderer:
   m_ObjectHideFlags: 0

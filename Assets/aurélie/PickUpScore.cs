@@ -8,10 +8,13 @@ public class PickUpScore : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Player"))
-            return;
-        Score.instance.AddScore(addScore);
+        if (collision.CompareTag("Player") || collision.CompareTag("playerTransform"))
+        {
+            Score.instance.AddScore(addScore);
+            Destroy(gameObject);
+        }
+        
+
         // son collect
-        Destroy(gameObject);
     }
 }

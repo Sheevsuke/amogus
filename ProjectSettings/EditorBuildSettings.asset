@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/clement/credits.unity
     guid: 73cb810469132f3409d00716580dd333
+  - enabled: 1
+    path: Assets/Scenes/dead screen.unity
+    guid: 95e54796cadb98645bcc04b014597f25
   m_configObjects: {}

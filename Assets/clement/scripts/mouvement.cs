@@ -29,6 +29,7 @@ public class mouvement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftArrow))
             if ((onCollision && Vector2.left != nextVec) || !onCollision)
             {
+                SpriteRenderer.flipY = false;
                 SpriteRenderer.flipX = false;
                 vec = Vector2.left;
 
@@ -37,6 +38,7 @@ public class mouvement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             if ((onCollision && Vector2.right != nextVec) || !onCollision)
             {
+                SpriteRenderer.flipY = false;
                 SpriteRenderer.flipX = true;
                 vec = Vector2.right;
 
@@ -134,7 +136,7 @@ public class mouvement : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(3);
         }
     }
 }

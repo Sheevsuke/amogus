@@ -8,6 +8,7 @@ public class scenemanager : MonoBehaviour
    public void loadFirstScene()
     {
         SceneManager.LoadScene(1);
+        Time.timeScale = 1;
     }
     public void loadCredit()
     {

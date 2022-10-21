@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class mouvement : MonoBehaviour
 {
     public Vector3 vec = Vector2.zero;
+    public SpriteRenderer SpriteRenderer;
     public float speed = 10;
     public float bonusSpeed = 1;
     public float timeBonusMouvement = 5;
@@ -14,8 +15,10 @@ public class mouvement : MonoBehaviour
     public Vector2 nextVec = Vector2.zero;
     public bool onCollision = false;
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] int vie = 3;
+    [SerializeField] public int vie = 3;
     [SerializeField] Transform respawn;
+    public scenemanager scenemanager;
+
 
     
 
@@ -23,23 +26,39 @@ public class mouvement : MonoBehaviour
     {
         //listen des touches zqsd et changement du vecteur unitaire et verification de si il est en collision avec un mur
         // + ne pas aller dans la dirrection dans lequel il est aller lorsqu'il est rentré en collision avec le mur
-
         if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftArrow))
             if ((onCollision && Vector2.left != nextVec) || !onCollision)
+            {
+                SpriteRenderer.flipX = false;
                 vec = Vector2.left;
+
+            }
 
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             if ((onCollision && Vector2.right != nextVec) || !onCollision)
+            {
+                SpriteRenderer.flipX = true;
                 vec = Vector2.right;
+
+            }
+
 
 
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.UpArrow))
             if ((onCollision && Vector2.up != nextVec) || !onCollision)
+            {
+                SpriteRenderer.flipY = true;
                 vec = Vector2.up;
+
+            }
 
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             if ((onCollision && Vector2.down != nextVec) || !onCollision)
+            {
+                SpriteRenderer.flipY = false;
                 vec = Vector2.down;
+
+            }
 
 
 
@@ -67,6 +86,7 @@ public class mouvement : MonoBehaviour
         }
         else if (collision.gameObject.layer == 8 && this.gameObject.tag == "playerTransform") // si on a le bonus de form et que tu touche un fantomes
         {
+
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.layer == 8 && this.gameObject.tag == "Player") // si on touche un fantome sans le bonus
@@ -105,6 +125,8 @@ public class mouvement : MonoBehaviour
             vie--;
             this.transform.position = respawn.position;
             vec = Vector2.zero;
+            SpriteRenderer.flipY = false;
+            SpriteRenderer.flipX = false;
         }
         else
         {

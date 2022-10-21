@@ -3,11 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-<<<<<<< HEAD
-  - PlayerTransform
-=======
-
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -15,14 +11,10 @@ TagManager:
   - 
   - Water
   - UI
-  - bonus
-  - bonusPlayer
-  - ennemis
-<<<<<<< HEAD
-  - mur
-=======
-  - mur
->>>>>>> main
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

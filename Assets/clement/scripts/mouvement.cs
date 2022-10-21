@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class mouvement : MonoBehaviour
 {
-    public Vector2 vec = Vector2.zero;
+    public Vector3 vec = Vector2.zero;
     public float speed = 10;
     public float bonusSpeed = 1;
     public float timeBonusMouvement = 5;
@@ -12,7 +12,9 @@ public class mouvement : MonoBehaviour
     public Transform passage1, passage2;
     public Vector2 nextVec = Vector2.zero;
     public bool onCollision = false;
+    [SerializeField] Rigidbody2D rb;
 
+    
 
     void Update()
     {
@@ -43,9 +45,9 @@ public class mouvement : MonoBehaviour
     private void FixedUpdate()
     {
         // deplacement (tjr mieux en fixed update)
-        this.transform.Translate(vec * Time.deltaTime * speed * bonusSpeed);
+        rb.MovePosition(rb.transform.position + (vec * Time.fixedDeltaTime * speed * bonusSpeed));
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision )
     {
         if (collision.gameObject.layer == 6) //bonus de mouvement
         {
@@ -68,19 +70,9 @@ public class mouvement : MonoBehaviour
         {
             //playerhit
         }
-        else if (collision.gameObject.layer == 9)
-        {
-            nextVec = vec;
-            vec = Vector2.zero;
-            onCollision = true;
-        }
+        
 
 
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if(collision.gameObject.layer == 9)
-            onCollision = false;
     }
     private void OnTriggerEnter2D(Collider2D collision) // passages et teleport
     {

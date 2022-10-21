@@ -8,6 +8,7 @@ public class mouvement : MonoBehaviour
     public Vector3 vec = Vector2.zero;
     public SpriteRenderer SpriteRenderer;
     public float speed = 5;
+    public float slow = 0.5f;
     public float bonusSpeed = 1;
     public float timeBonusMouvement = 5;
     public float timeBonusPlayer = 5;
@@ -16,11 +17,17 @@ public class mouvement : MonoBehaviour
     public bool onCollision = false;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] public int vie = 3;
+    [SerializeField] public int secondsToWait = 5;
     [SerializeField] Transform respawn;
+    [SerializeField] fantomespawn fantomespawn;
     public int scoreEnemiesKill = 200;
-    
+    public Pathfinding.AIPath[] path;
+    public GameObject[] fantomes;
 
-    
+    private void Start()
+    {
+        path = GetComponents<Pathfinding.AIPath>();
+    }
 
     void Update()
     {
@@ -83,6 +90,10 @@ public class mouvement : MonoBehaviour
         else if (collision.gameObject.layer == 7) // bonus de changement de form (quand tu peux tuer les fantomes)
         {
             Score.instance.AddScore(50);
+            foreach (Pathfinding.AIPath fantome in path)
+            {
+                fantome.maxSpeed = slow;
+            }
             this.gameObject.tag = "playerTransform";
             StartCoroutine(waiting(timeBonusMouvement));
             Destroy(collision.gameObject);
@@ -90,10 +101,10 @@ public class mouvement : MonoBehaviour
         else if (collision.gameObject.layer == 8 && this.gameObject.tag == "playerTransform") // si on a le bonus de form et que tu touche un fantomes
         {
             Score.instance.AddScore(scoreEnemiesKill);
+            StartCoroutine(fantomespawn.fantomesRespawn(collision.gameObject, secondsToWait));
             if (scoreEnemiesKill != 1600)
                 scoreEnemiesKill *= 2;
 
-            Destroy(collision.gameObject);
         }
         else if (collision.gameObject.layer == 8 && this.gameObject.tag == "Player") // si on touche un fantome sans le bonus
         {
@@ -123,6 +134,10 @@ public class mouvement : MonoBehaviour
     {
         yield return new WaitForSeconds(temps);
         this.gameObject.tag = "Player";
+        foreach (Pathfinding.AIPath fantome in path)
+        {
+            fantome.maxSpeed = 0.7f;
+        }
     }
     public void playerHit()
     {

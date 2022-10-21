@@ -8,6 +8,7 @@ public class fantomespawn : MonoBehaviour
     [SerializeField] public int countMax;
     [SerializeField] public int count = 0;
     [SerializeField] public float seconds = 5;
+    [SerializeField] public Transform fantomeRespawn;
 
     void Start()
     {
@@ -20,9 +21,10 @@ public class fantomespawn : MonoBehaviour
     {
         StartCoroutine(swapingCoroutine());
     }
+
     IEnumerator swapingCoroutine()
     {
-        if (count <= countMax)
+        if (count < countMax)
         {
             Instantiate(fantomes[count]);
             count++;
@@ -35,4 +37,14 @@ public class fantomespawn : MonoBehaviour
 
 
     }
+    public IEnumerator fantomesRespawn(GameObject fantome, int wait)
+    {
+        fantome.SetActive(false);
+        yield return new WaitForSeconds(wait);
+        fantome.SetActive(true);
+        fantome.transform.position = fantomeRespawn.transform.position;
+
+
+    }
 }
+

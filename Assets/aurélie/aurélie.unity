@@ -1080,7 +1080,6 @@ GameObject:
   - component: {fileID: 1019906036}
   - component: {fileID: 1019906035}
   - component: {fileID: 1019906037}
-  - component: {fileID: 1019906034}
   m_Layer: 7
   m_Name: Fruit
   m_TagString: Untagged
@@ -1088,19 +1087,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1019906034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019906033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa8c9a82e1343d4abc858f3e4ba9a12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  addScore: 100
 --- !u!212 &1019906035
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1661,6 +1647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vec: {x: 0, y: 0, z: 0}
   speed: 8.94
+  slow: 0.5
   bonusSpeed: 1
   timeBonusMouvement: 5
   timeBonusPlayer: 5
@@ -1669,7 +1656,12 @@ MonoBehaviour:
   nextVec: {x: 0, y: 0}
   onCollision: 0
   vie: 3
+  secondsToWait: 5
+  fantomespawn: {fileID: 0}
   scoreEnemiesKill: 200
+  path: []
+  fantomes: []
+  life: []
 --- !u!212 &1753800307
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class mouvement : MonoBehaviour
 {
     public Vector3 vec = Vector2.zero;
     public SpriteRenderer SpriteRenderer;
-    public float speed = 10;
+    public float speed = 5;
     public float bonusSpeed = 1;
     public float timeBonusMouvement = 5;
     public float timeBonusPlayer = 5;
@@ -17,8 +17,8 @@ public class mouvement : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] public int vie = 3;
     [SerializeField] Transform respawn;
-    public scenemanager scenemanager;
-
+    public int scoreEnemiesKill = 200;
+    
 
     
 
@@ -80,12 +80,16 @@ public class mouvement : MonoBehaviour
         }
         else if (collision.gameObject.layer == 7) // bonus de changement de form (quand tu peux tuer les fantomes)
         {
+            Score.instance.AddScore(50);
             this.gameObject.tag = "playerTransform";
             StartCoroutine(waiting(timeBonusMouvement));
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.layer == 8 && this.gameObject.tag == "playerTransform") // si on a le bonus de form et que tu touche un fantomes
         {
+            Score.instance.AddScore(scoreEnemiesKill);
+            if (scoreEnemiesKill != 1600)
+                scoreEnemiesKill *= 2;
 
             Destroy(collision.gameObject);
         }

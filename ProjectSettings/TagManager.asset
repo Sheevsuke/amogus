@@ -4,10 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< HEAD
-  - PlayerTransform
-=======
-
+  - playerTransform
+  - Pellet
   layers:
   - Default
   - TransparentFX
@@ -18,11 +16,7 @@ TagManager:
   - bonus
   - bonusPlayer
   - ennemis
-<<<<<<< HEAD
   - mur
-=======
-  - mur
->>>>>>> main
   - 
   - 
   - 

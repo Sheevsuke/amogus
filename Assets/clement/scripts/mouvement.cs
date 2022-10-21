@@ -22,7 +22,6 @@ public class mouvement : MonoBehaviour
     public bool onCollision = false;
     [SerializeField] public int vie = 3;
     [SerializeField] public int secondsToWait = 5;
-    [SerializeField] Transform respawn;
     [SerializeField] fantomespawn fantomespawn;
     public int scoreEnemiesKill = 200;
     public Pathfinding.AIPath[] path;

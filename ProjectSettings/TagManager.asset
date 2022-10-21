@@ -6,6 +6,7 @@ TagManager:
   tags:
   - playerTransform
   - Pellet
+  - Fruit
   layers:
   - Default
   - TransparentFX

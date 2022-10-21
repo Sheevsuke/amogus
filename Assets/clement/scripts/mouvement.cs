@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class mouvement : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class mouvement : MonoBehaviour
     public Vector2 nextVec = Vector2.zero;
     public bool onCollision = false;
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] int vie = 3;
+    [SerializeField] Transform respawn;
 
     
 
@@ -68,7 +71,7 @@ public class mouvement : MonoBehaviour
         }
         else if (collision.gameObject.layer == 8 && this.gameObject.tag == "Player") // si on touche un fantome sans le bonus
         {
-            //playerhit
+            playerHit();
         }
         
 
@@ -94,9 +97,19 @@ public class mouvement : MonoBehaviour
     {
         yield return new WaitForSeconds(temps);
         this.gameObject.tag = "Player";
-
-
-
+    }
+    public void playerHit()
+    {
+        if (vie >= 1)
+        {
+            vie--;
+            this.transform.position = respawn.position;
+            vec = Vector2.zero;
+        }
+        else
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 }
 

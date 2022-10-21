@@ -9,11 +9,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6148862482885712545, guid: 8def552a83665b84484648db65040384, type: 3}
       propertyPath: m_Name
-      value: Enemy(4chase)
+      value: Enemy(4chase) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6148862482885712546, guid: 8def552a83665b84484648db65040384, type: 3}
       propertyPath: target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148862482885712547, guid: 8def552a83665b84484648db65040384, type: 3}
+      propertyPath: pickNextWaypointDist
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6148862482885712557, guid: 8def552a83665b84484648db65040384, type: 3}
       propertyPath: m_RootOrder

@@ -10,6 +10,7 @@ public class EndGame : MonoBehaviour
 
     [SerializeField] private GameObject _winScreen;
     [SerializeField] private Text _scoreCount;
+    [SerializeField] private GameObject _scoreCountGame;
 
     [SerializeField] private Score _score;
 
@@ -19,6 +20,7 @@ public class EndGame : MonoBehaviour
         if (_pelletLeft == 0) // no pellet left > end game
         {
             Time.timeScale = 0;
+            _scoreCountGame.SetActive(false);
             _winScreen.SetActive(true);
             _scoreCount.text = _score.scoreCount.ToString();
         }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class mouvement : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class mouvement : MonoBehaviour
     public int scoreEnemiesKill = 200;
     public Pathfinding.AIPath[] path;
     public GameObject[] fantomes;
+    public Image[] life;
 
     private void Start()
     {
@@ -68,6 +70,8 @@ public class mouvement : MonoBehaviour
                 vec = Vector2.down;
 
             }
+        if (Input.GetKeyDown(KeyCode.A))
+            playerHit();
 
 
 
@@ -144,6 +148,7 @@ public class mouvement : MonoBehaviour
         if (vie >= 1)
         {
             vie--;
+            life[vie].gameObject.SetActive(false);
             this.transform.position = respawn.position;
             vec = Vector2.zero;
             SpriteRenderer.flipY = false;

@@ -13,8 +13,7 @@ public class PickUpScore : MonoBehaviour
             Score.instance.AddScore(addScore);
             Destroy(gameObject);
         }
-        
 
-        // son collect
+
     }
 }

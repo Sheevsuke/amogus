@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class mouvement : MonoBehaviour
 {
+
+    private SpriteRenderer SpriteRenderer;
+    private Rigidbody2D rb;
+    private Transform respawn;
+
     public Vector3 vec = Vector2.zero;
-    public SpriteRenderer SpriteRenderer;
     public float speed = 5;
     public float bonusSpeed = 1;
     public float timeBonusMouvement = 5;
@@ -14,13 +18,15 @@ public class mouvement : MonoBehaviour
     public Transform passage1, passage2;
     public Vector2 nextVec = Vector2.zero;
     public bool onCollision = false;
-    [SerializeField] Rigidbody2D rb;
     [SerializeField] public int vie = 3;
-    [SerializeField] Transform respawn;
     public int scoreEnemiesKill = 200;
-    
 
-    
+    private void Awake()
+    {
+        SpriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        respawn = GetComponent<Transform>();
+    }
 
     void Update()
     {
@@ -66,6 +72,7 @@ public class mouvement : MonoBehaviour
 
 
     }
+
     private void FixedUpdate()
     {
         // deplacement (tjr mieux en fixed update)
@@ -87,7 +94,7 @@ public class mouvement : MonoBehaviour
             StartCoroutine(waiting(timeBonusMouvement));
             Destroy(collision.gameObject);
         }
-        else if (collision.gameObject.layer == 8 && this.gameObject.tag == "playerTransform") // si on a le bonus de form et que tu touche un fantomes
+        else if (collision.gameObject.layer == 8 && this.gameObject.tag == "playerTransform") // si on a le bonus de form et que tu touche un fantome
         {
             Score.instance.AddScore(scoreEnemiesKill);
             if (scoreEnemiesKill != 1600)

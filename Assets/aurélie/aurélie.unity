@@ -123,6 +123,173 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &95331396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 95331398}
+  - component: {fileID: 95331397}
+  - component: {fileID: 95331399}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &95331397
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95331396}
+  m_Enabled: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6ae0ca8beee9b4f4fad58a6efb5cc38e, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &95331398
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95331396}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.183261, y: 0.495683, z: -9.984895}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &95331399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95331396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f91ec0288759df49ac70af9c11aa9aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: GameStart
+    clip: {fileID: 8300000, guid: f71ca625f617fc742a320af2c84ec168, type: 3}
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+  - name: Munch1
+    clip: {fileID: 8300000, guid: 9204cc43a4c513c4bb365a7232314a29, type: 3}
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+  - name: Munch2
+    clip: {fileID: 8300000, guid: b6efeefb6d1c3e74791f6166f71fcbeb, type: 3}
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+  - name: EatGhost
+    clip: {fileID: 8300000, guid: d67db4227bb56d945855232ba6d97b0f, type: 3}
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+  - name: PowerPellet
+    clip: {fileID: 8300000, guid: 1f59d82e023b24f4b80582e9e4770980, type: 3}
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
 --- !u!1 &118311395
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,7 +1081,7 @@ GameObject:
   - component: {fileID: 1019906035}
   - component: {fileID: 1019906037}
   - component: {fileID: 1019906034}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1493,8 +1660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vec: {x: 0, y: 0, z: 0}
-  SpriteRenderer: {fileID: 0}
-  speed: 10
+  speed: 8.94
   bonusSpeed: 1
   timeBonusMouvement: 5
   timeBonusPlayer: 5
@@ -1502,9 +1668,7 @@ MonoBehaviour:
   passage2: {fileID: 0}
   nextVec: {x: 0, y: 0}
   onCollision: 0
-  rb: {fileID: 0}
   vie: 3
-  respawn: {fileID: 0}
   scoreEnemiesKill: 200
 --- !u!212 &1753800307
 SpriteRenderer:
